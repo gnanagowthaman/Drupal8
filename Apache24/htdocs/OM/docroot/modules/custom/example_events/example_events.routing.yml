@@ -1,0 +1,7 @@
+example_events.single_tab:
+  path: '/admin/config/testdispatcher'
+  defaults:
+    _form: '\Drupal\example_events\Form\DemoEventDispatchForm'
+    _title: 'Form Test'
+  requirements:
+    _permission: 'administer site configuration'
