@@ -1,0 +1,49 @@
+<?php
+/**
+ * @File
+ * Example custom module for Drupal 8.
+ * @author Rakesh James
+ */
+
+/**
+ * Implementing hook_menu().
+ */
+function mail_example_menu() {
+  $items['/mypage/page'] = array(
+    'title' => 'First page',
+    'description' => 'This is a example page.',
+    'route' => 'mail_example.my_page',
+  );
+  $items['/mypage/register']= [
+    'title' => 'Registeration Page',
+    'description' => 'This is a second example',
+    'route' => 'mail_example.register',
+  ];
+  return $items;
+}
+/**
+ * Implements hook_mail().
+ *
+ * This function completes the email, allowing for placeholder substitution.
+ */
+function mail_example_mail($key, &$message, $params) {
+  kint($key);
+}
+/**
+ *
+ * @param array $attachments
+ */
+function mail_example_page_attachments(array &$attachments) {
+  // Unconditionally attach an asset to the page.
+  $attachments['#attached']['library'][] = 'subtheme/js_example';
+}
+/**
+ * Implements hook_theme().
+ */
+function mail_example_theme($existing, $type, $theme, $path) {
+  return [
+    'my_template' => [
+      'variables' => ['test_var' => NULL],
+    ],
+  ];
+}

@@ -1,0 +1,21 @@
+mail_example.my_page:
+  path: '/mypage/page'
+  defaults:
+    _controller: '\Drupal\mail_example\Controller\ExampleController::myPage'
+    _title: 'Search for Investment'
+  requirements: 
+    _permission: 'access content'
+mail_example.register: 
+  path: '/mypage/register'
+  defaults:
+    _controller: '\Drupal\mail_example\Controller\ProductRegisterController::regProduct'
+    _title: 'Registeration'
+  requirements: 
+    _permission: 'access content'
+mail_example.display: 
+  path: '/mypage/display'
+  defaults:
+    _controller: '\Drupal\mail_example\Controller\ProductRegisterController::prodDisplay'
+    _title: 'View'
+  requirements: 
+    _permission: 'access content'

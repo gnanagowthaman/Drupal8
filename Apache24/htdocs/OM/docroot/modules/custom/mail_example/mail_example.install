@@ -1,0 +1,91 @@
+<?php
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup mail_example
+ */
+function mail_example_schema() {
+  $schema['mail_example'] = [
+    'description' => 'Stores example product entries for demonstration purposes.',
+    'fields' => [
+      'pid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique product ID.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Creator user's {users}.uid",
+      ],
+      'producttitle' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the person.',
+      ],
+      'minage' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The age of the person max in years.',
+      ],
+      'maxage' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The age of the person min in years.',
+      ],
+      'gender' => [
+        'type' => 'char',
+        'length' => 1,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Surname of the person.',
+      ],
+      'investment' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'big',
+        'description' => 'The investment of the person calculated.',
+      ],
+      'annualincome' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'big',
+        'description' => 'The annualincome of the person calculated.',
+      ],
+    ],
+    'primary key' => ['pid'],
+    'indexes' => [
+      'producttitle' => ['producttitle'],
+      'minage' => ['minage'],
+      'maxage' => ['maxage'],
+      'gender' => ['gender'],
+      'investment' => ['investment'],
+      'annualincome' => ['annualincome'],
+    ],
+  ];
+
+  return $schema;
+}
+/**
+ * Implements hook_uninstall().
+ *
+ * This removes the example data when the module is uninstalled.
+ *
+ * @ingroup mail_example
+ */
+function mail_example_uninstall() {
+  db_drop_table('mail_example');
+}
