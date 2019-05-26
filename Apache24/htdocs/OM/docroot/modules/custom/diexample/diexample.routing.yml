@@ -1,0 +1,7 @@
+diexample.callto:
+  path: '/testbir'
+  defaults: 
+    _controller: '\Drupal\diexample\Controller\TeamWish::callMe'
+    _title: 'Welcome to DI'
+  requirements:
+    _permission: 'access content'
